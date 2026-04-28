@@ -1,11 +1,1537 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-  <title>Bianka Ullmann</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bianka Ullmann — Senior Innovation Strategist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f2ec;
+    --bg-alt: #efeae1;
+    --ink: #14140f;
+    --ink-soft: #3a3a33;
+    --ink-muted: #6e6e66;
+    --rule: #d9d3c7;
+    --accent: oklch(0.62 0.19 28);        /* coral red — from portrait cardigan */
+    --accent-soft: oklch(0.62 0.19 28 / 0.08);
+    --serif: "Instrument Serif", "Times New Roman", serif;
+    --sans: "IBM Plex Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+    --pad: clamp(20px, 4vw, 48px);
+    --max: 1240px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding-left: var(--pad);
+    padding-right: var(--pad);
+  }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    padding: 18px 0;
+    background: color-mix(in oklab, var(--bg) 85%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s ease, padding .3s ease;
+  }
+  nav.scrolled { border-bottom-color: var(--rule); padding: 12px 0; }
+  nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .brand {
+    font-family: var(--serif);
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .brand-dot {
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .nav-links a { position: relative; transition: color .2s ease; }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    height: 1px;
+    width: 0;
+    background: var(--ink);
+    transition: width .3s ease;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    font-size: 13px;
+    padding: 9px 16px;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    transition: background .2s, color .2s;
+  }
+  .nav-cta:hover { background: var(--ink); color: var(--bg); }
+
+  @media (max-width: 760px) {
+    .nav-links { display: none; }
+  }
+
+  /* ---------- REVEAL ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal.d1 { transition-delay: .08s; }
+  .reveal.d2 { transition-delay: .16s; }
+  .reveal.d3 { transition-delay: .24s; }
+  .reveal.d4 { transition-delay: .32s; }
+  .reveal.d5 { transition-delay: .40s; }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 170px 0 110px;
+    position: relative;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 22px; height: 1px;
+    background: var(--ink-muted);
+    display: inline-block;
+  }
+
+  h1.headline {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(44px, 7.5vw, 104px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    max-width: 14ch;
+    margin-bottom: 32px;
+  }
+  h1.headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .subheadline {
+    font-size: clamp(17px, 1.6vw, 20px);
+    line-height: 1.55;
+    max-width: 56ch;
+    color: var(--ink-soft);
+    margin-bottom: 44px;
+  }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 26px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .btn-primary:hover { transform: translateY(-2px); background: var(--accent); }
+  .btn-primary .arrow { transition: transform .25s ease; }
+  .btn-primary:hover .arrow { transform: translateX(4px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--rule);
+  }
+  .btn-ghost:hover { border-color: var(--ink); }
+
+  .hero-meta {
+    margin-top: 88px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+  }
+  .hero-meta .item span {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .hero-meta .item p {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.2;
+  }
+  @media (max-width: 760px) {
+    .hero { padding: 130px 0 80px; }
+    .hero-meta { grid-template-columns: 1fr; gap: 18px; }
+  }
+
+  /* ---------- SECTION ---------- */
+  section { padding: 110px 0; }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before {
+    content: attr(data-num);
+    color: var(--ink);
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(32px, 4.5vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    max-width: 22ch;
+    margin-bottom: 48px;
+  }
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  @media (max-width: 760px) {
+    section { padding: 80px 0; }
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 72px;
+    align-items: start;
+  }
+  .about-lead {
+    font-family: var(--serif);
+    font-size: clamp(26px, 3vw, 34px);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+  .about-body p {
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
+  .about-body p:last-child { margin-bottom: 0; }
+
+  .portrait-wrap {
+    position: sticky;
+    top: 100px;
+  }
+  .portrait {
+    aspect-ratio: 4 / 5;
+    width: 100%;
+    border: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-alt);
+  }
+  .portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 18%;
+    display: block;
+    transition: transform 1.2s cubic-bezier(.2,.7,.2,1);
+  }
+  .portrait:hover img { transform: scale(1.02); }
+  .portrait-caption {
+    margin-top: 12px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .portrait-wrap { position: static; }
+  }
+
+  /* ---------- LEBENSLAUF ---------- */
+  .cv {
+    background: var(--bg-alt);
+  }
+
+  .cv-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0;
+  }
+  .cv-tab {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 12px 18px 14px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: var(--ink-muted);
+    position: relative;
+    transition: color .2s ease;
+  }
+  .cv-tab::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -1px;
+    height: 2px;
+    background: var(--ink);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .4s cubic-bezier(.2,.7,.2,1);
+  }
+  .cv-tab:hover { color: var(--ink); }
+  .cv-tab.active { color: var(--ink); }
+  .cv-tab.active::after { transform: scaleX(1); }
+
+  .cv-panel { display: none; }
+  .cv-panel.active { display: block; }
+
+  .cv-list {
+    border-top: 1px solid var(--rule);
+  }
+
+  details.cv-item {
+    border-bottom: 1px solid var(--rule);
+    padding: 0;
+  }
+  details.cv-item[open] { background: color-mix(in oklab, var(--bg) 55%, var(--bg-alt)); }
+
+  details.cv-item > summary {
+    list-style: none;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 110px 1fr auto;
+    gap: 28px;
+    align-items: baseline;
+    padding: 26px 0;
+    position: relative;
+    transition: padding .3s ease;
+  }
+  details.cv-item > summary::-webkit-details-marker { display: none; }
+  details.cv-item > summary:hover { padding-left: 12px; }
+
+  .cv-year {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    white-space: nowrap;
+  }
+  .cv-role {
+    font-family: var(--serif);
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .cv-org {
+    display: block;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--ink-muted);
+    margin-top: 4px;
+    letter-spacing: 0;
+  }
+  .cv-toggle {
+    width: 28px; height: 28px;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+    transition: border-color .3s ease, background .3s ease;
+  }
+  .cv-toggle::before,
+  .cv-toggle::after {
+    content: '';
+    position: absolute;
+    background: var(--ink);
+    transition: transform .3s ease, opacity .3s ease;
+  }
+  .cv-toggle::before { width: 10px; height: 1px; }
+  .cv-toggle::after  { width: 1px; height: 10px; }
+  details[open] .cv-toggle { background: var(--ink); border-color: var(--ink); }
+  details[open] .cv-toggle::before { background: var(--bg); }
+  details[open] .cv-toggle::after  { background: var(--bg); transform: scaleY(0); }
+
+  .cv-detail {
+    padding: 0 0 32px 138px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    animation: slideDown .4s cubic-bezier(.2,.7,.2,1);
+  }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: none; }
+  }
+  .cv-detail h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .cv-detail ul {
+    list-style: none;
+    padding: 0;
+  }
+  .cv-detail li {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    padding: 10px 0 10px 18px;
+    position: relative;
+    border-top: 1px dashed var(--rule);
+  }
+  .cv-detail li:first-child { border-top: none; padding-top: 0; }
+  .cv-detail li:first-child::before { top: 8px; }
+  .cv-detail li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 18px;
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .cv-detail li strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  @media (max-width: 900px) {
+    details.cv-item > summary {
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      padding: 22px 0;
+    }
+    .cv-year { grid-column: 1 / -1; order: -1; font-size: 11px; }
+    .cv-detail {
+      padding: 0 0 28px 0;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+  }
+
+  /* Expertise grid */
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .exp-item {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 32px;
+    align-items: baseline;
+  }
+  .exp-item:nth-child(odd)  { padding-right: 32px; border-right: 1px solid var(--rule); }
+  .exp-item:nth-child(even) { padding-left: 32px; }
+  .exp-item h3 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .exp-item p {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  @media (max-width: 760px) {
+    .expertise-grid { grid-template-columns: 1fr; }
+    .exp-item, .exp-item:nth-child(odd), .exp-item:nth-child(even) {
+      padding: 24px 0;
+      border-right: none;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+
+  /* ---------- KONTAKT ---------- */
+  .kontakt {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 140px 0 80px;
+  }
+  .kontakt .section-label { color: color-mix(in oklab, var(--bg) 60%, transparent); }
+  .kontakt .section-label::before { color: var(--bg); }
+  .kontakt-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(40px, 6vw, 84px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    max-width: 18ch;
+    margin-bottom: 60px;
+  }
+  .kontakt-title em { font-style: italic; color: oklch(0.78 0.14 28); }
+
+  .kontakt-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    padding-top: 40px;
+    border-top: 1px solid color-mix(in oklab, var(--bg) 20%, transparent);
+  }
+  .k-block span {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: color-mix(in oklab, var(--bg) 50%, transparent);
+    display: block;
+    margin-bottom: 14px;
+  }
+  .k-block a, .k-block p {
+    font-family: var(--serif);
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    display: inline-block;
+    position: relative;
+  }
+  .k-block a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 2px;
+    width: 100%; height: 1px;
+    background: currentColor;
+    transform: scaleX(0.3);
+    transform-origin: left;
+    transition: transform .4s cubic-bezier(.2,.7,.2,1);
+  }
+  .k-block a:hover::after { transform: scaleX(1); }
+
+  .kontakt-foot {
+    margin-top: 100px;
+    padding-top: 28px;
+    border-top: 1px solid color-mix(in oklab, var(--bg) 20%, transparent);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: color-mix(in oklab, var(--bg) 50%, transparent);
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .kontakt-foot a:hover { color: var(--bg); }
+
+  @media (max-width: 760px) {
+    .kontakt-grid { grid-template-columns: 1fr; gap: 36px; }
+  }
+
+  /* ---------- FOOTER LINKS ---------- */
+  .kontakt-foot a {
+    transition: color .2s ease;
+  }
+  .kontakt-foot .legal-links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .kontakt-foot button.legal-link {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    padding: 0;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    transition: color .2s ease;
+  }
+  .kontakt-foot button.legal-link:hover,
+  .kontakt-foot a:hover { color: var(--bg); }
+
+  /* ---------- MODAL ---------- */
+  .modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    padding: clamp(20px, 6vw, 80px) var(--pad);
+    background: color-mix(in oklab, var(--ink) 70%, transparent);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    overflow-y: auto;
+    opacity: 0;
+    transition: opacity .3s ease;
+  }
+  .modal.open { display: flex; opacity: 1; }
+
+  .modal-card {
+    background: var(--bg);
+    color: var(--ink);
+    max-width: 720px;
+    width: 100%;
+    border: 1px solid var(--rule);
+    padding: clamp(28px, 4vw, 56px);
+    position: relative;
+    transform: translateY(12px);
+    transition: transform .4s cubic-bezier(.2,.7,.2,1);
+  }
+  .modal.open .modal-card { transform: none; }
+
+  .modal-close {
+    position: absolute;
+    top: 18px; right: 18px;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--rule);
+    background: transparent;
+    cursor: pointer;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .2s ease, color .2s ease, border-color .2s ease;
+  }
+  .modal-close:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .modal-close::before, .modal-close::after {
+    content: '';
+    position: absolute;
+    width: 14px; height: 1px;
+    background: currentColor;
+  }
+  .modal-close::before { transform: rotate(45deg); }
+  .modal-close::after  { transform: rotate(-45deg); }
+
+  .modal-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .modal-eyebrow::before {
+    content: '';
+    width: 18px; height: 1px;
+    background: var(--ink-muted);
+  }
+  .modal-card h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(28px, 3.4vw, 40px);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin-bottom: 28px;
+  }
+  .modal-card h3 {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin: 24px 0 8px;
+  }
+  .modal-card h3:first-of-type { margin-top: 0; }
+  .modal-card p {
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .modal-card p strong { color: var(--ink); font-weight: 500; }
+  .modal-card a {
+    color: var(--accent);
+    border-bottom: 1px solid color-mix(in oklab, var(--accent) 40%, transparent);
+    transition: border-color .2s ease;
+  }
+  .modal-card a:hover { border-color: var(--accent); }
+  .modal-card hr {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 24px 0;
+  }
+
+  /* ---------- CONSENT BANNER ---------- */
+  .consent {
+    position: fixed;
+    left: clamp(16px, 3vw, 32px);
+    right: clamp(16px, 3vw, 32px);
+    bottom: clamp(16px, 3vw, 32px);
+    max-width: 520px;
+    z-index: 80;
+    background: var(--ink);
+    color: var(--bg);
+    padding: 24px 26px;
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(20,20,15,0.18);
+    transform: translateY(140%);
+    opacity: 0;
+    transition: transform .5s cubic-bezier(.2,.7,.2,1), opacity .4s ease;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .consent.show { transform: none; opacity: 1; }
+  .consent h4 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .consent p {
+    color: color-mix(in oklab, var(--bg) 75%, transparent);
+    margin-bottom: 18px;
+  }
+  .consent p a {
+    color: var(--bg);
+    border-bottom: 1px solid color-mix(in oklab, var(--bg) 40%, transparent);
+  }
+  .consent-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .consent button {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 11px 18px;
+    border-radius: 999px;
+    cursor: pointer;
+    border: 1px solid color-mix(in oklab, var(--bg) 30%, transparent);
+    background: transparent;
+    color: var(--bg);
+    transition: background .2s ease, color .2s ease, border-color .2s ease;
+  }
+  .consent button:hover { border-color: var(--bg); }
+  .consent button.primary {
+    background: var(--bg);
+    color: var(--ink);
+    border-color: var(--bg);
+  }
+  .consent button.primary:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+
+  @media (max-width: 560px) {
+    .consent { padding: 20px; }
+  }
+
+  /* Small util */
+  .caret {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-right: 1.5px solid currentColor;
+    border-top: 1.5px solid currentColor;
+    transform: rotate(45deg);
+    margin-left: 4px;
+  }
+</style>
 </head>
 <body>
-  <h1>Bianka Ullmann</h1>
-  <p>Von der Vision zum Impact</p>
-  <p>ullmann@bianka.at</p>
+
+<nav id="nav">
+  <div class="wrap">
+    <a href="#top" class="brand"><span class="brand-dot"></span>Bianka Ullmann</a>
+    <div class="nav-links">
+      <a href="#about">Profil</a>
+      <a href="#lebenslauf">Lebenslauf</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+    <a href="uploads/Lebenslauf_Bianka_Ullmann.pdf" class="nav-cta" target="_blank" rel="noopener">Lebenslauf (PDF)</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow reveal">Senior Innovation Strategist</div>
+    <h1 class="headline reveal d1">Von der Vision zum <em>Impact</em>.</h1>
+    <p class="subheadline reveal d2">
+      Geschäftsmodelle, Produkte und Services in allen Entwicklungsphasen —
+      von der frühen Hypothese bis zum messbaren Marktergebnis.
+      Innovationsmethodik, unternehmerisches Denken und Umsetzungs­kompetenz aus einer Hand.
+    </p>
+    <div class="cta-row reveal d3">
+      <a href="#lebenslauf" class="btn btn-primary">
+        Zum Lebenslauf
+        <span class="arrow">→</span>
+      </a>
+      <a href="uploads/Lebenslauf_Bianka_Ullmann.pdf" target="_blank" rel="noopener" class="btn btn-ghost">PDF herunterladen</a>
+    </div>
+
+    <div class="hero-meta">
+      <div class="item reveal d3">
+        <span>Erfahrung</span>
+        <p>10+ Jahre Innovation, Produkt &amp; Transformation</p>
+      </div>
+      <div class="item reveal d4">
+        <span>Branchen</span>
+        <p>Mobilität · Technologie · Beratung · Soziales</p>
+      </div>
+      <div class="item reveal d5">
+        <span>Sprachen</span>
+        <p>Deutsch · Englisch · Bulgarisch</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-label reveal" data-num="01">· Profil</div>
+    <h2 class="section-title reveal d1">Innovation mit <em>unternehmerischem</em> Kompass.</h2>
+
+    <div class="about-grid">
+      <div class="reveal d1">
+        <div class="portrait-wrap">
+          <div class="portrait">
+            <img src="assets/bianka-ullmann.jpeg" alt="Porträt Bianka Ullmann" />
+          </div>
+          <div class="portrait-caption">
+            <span>Bianka Ullmann</span>
+            <span>© Katarina Lindbichler</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-body">
+        <p class="about-lead reveal d2">
+          Innovation Strategist mit langjähriger Erfahrung in der Entwicklung neuer
+          Geschäfts­modelle, Produkte und Services — von der Vision bis zum Impact.
+        </p>
+        <p class="reveal d3" style="margin-top: 28px;">
+          Ich verbinde Innovations­methoden mit unternehmerischem Denken und hoher
+          Umsetzungs­kompetenz. Schwerpunkte: Business Model Innovation, digitale
+          Geschäfts­modelle im hardware­geprägten Umfeld, Connectivity &amp; IoT sowie
+          Produkt­entwicklung in frühen Phasen.
+        </p>
+        <p class="reveal d4">
+          Ich führe interdisziplinäre Teams durch komplexe Transformations- und
+          Innovations­projekte. Erfahrung sowohl im öffentlichen Institutionen­umfeld
+          als auch im internationalen Konzern — aktuell bei der Robert Bosch AG.
+        </p>
+        <p class="reveal d5">
+          Forschungs­hintergrund als Dr. techn. (TU Wien, Technische Physik).
+          Dreisprachig (DE · EN · BG), Wohnsitz in Wien.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEBENSLAUF -->
+<section class="cv" id="lebenslauf">
+  <div class="wrap">
+    <div class="section-label reveal" data-num="02">· Lebenslauf</div>
+    <h2 class="section-title reveal d1">Stationen im Überblick — <em>zum Aufklappen</em>.</h2>
+
+    <div class="cv-tabs reveal d1" role="tablist">
+      <button class="cv-tab active" data-tab="erfahrung" role="tab">Erfahrung</button>
+      <button class="cv-tab" data-tab="bildung" role="tab">Bildung</button>
+      <button class="cv-tab" data-tab="expertise" role="tab">Expertise</button>
+      <button class="cv-tab" data-tab="privat" role="tab">Privat</button>
+    </div>
+
+    <!-- ERFAHRUNG -->
+    <div class="cv-panel active" data-panel="erfahrung">
+      <div class="cv-list">
+
+        <details class="cv-item">
+          <summary>
+            <span class="cv-year">seit 2024</span>
+            <span class="cv-role">Senior Innovation Strategist<span class="cv-org">Robert Bosch AG</span></span>
+            <span class="cv-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="cv-detail">
+            <div>
+              <h4>Projekte</h4>
+              <ul>
+                <li>Gestaltung und Umsetzung von Produkten und Dienstleistungen in den frühen Phasen der Geschäftsmodell­entwicklung.</li>
+                <li><strong>Erweiterung eines Beratungs­portfolios:</strong> Leitung eines interdisziplinären Teams, Analyse von Kunden­bedürfnissen, Markt­potenzialen und Herausforderungen, Problem­definition, Konzept­entwicklung &amp; -validierung, Go-to-Market-Strategie.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Erfolge</h4>
+              <ul>
+                <li>Aufdeckung bislang unerkannter Kunden­bedürfnisse durch systemische Analyse — gemeinsames Problem­verständnis über drei Abteilungen hinweg als Grundlage für nutzer­orientierte Innovation.</li>
+                <li>Initiierung unkonventioneller Konzepte (z. B. neue Kunden­segmentierung) zur Ermöglichung digitaler Geschäfts­modelle in einem hardware­geprägten Umfeld — Ergebnis: <strong>30 % weniger Entwicklungs­kosten</strong>.</li>
+                <li>Aufzeigen der Grenzen von Agilität und Selbst­organisation in einem Großkonzern­umfeld — Fokus auf tatsächliche Wirkung statt „Lehrbuch".</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="cv-item">
+          <summary>
+            <span class="cv-year">2022 – 2023</span>
+            <span class="cv-role">Senior Produktmanagerin<span class="cv-org">Robert Bosch AG</span></span>
+            <span class="cv-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="cv-detail">
+            <div>
+              <h4>Projekte</h4>
+              <ul>
+                <li><strong>Seamless Digital Access Solutions:</strong> Entwicklung digitaler Geschäfts­modelle für nahtlose Zutritts­erlebnisse zum Fahrzeug im B2B-Bereich — von der strategischen Produktvision bis zur Markt­einführung.</li>
+                <li>Strategische Weiter­entwicklung, Markteinführung und Betrieb schlüssel­loser Zugangs­lösungen im Bereich Passenger Car.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Erfolge</h4>
+              <ul>
+                <li>Berechnung eines realistischen, auf Hypothesen­validierung basierenden Business Cases und Herbei­führung einer fundierten Investment­entscheidung innerhalb der Produkt-Roadmap.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="cv-item">
+          <summary>
+            <span class="cv-year">2020 – 2021</span>
+            <span class="cv-role">Projektmanagerin &amp; Teamleiterin<span class="cv-org">Robert Bosch AG</span></span>
+            <span class="cv-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="cv-detail">
+            <div>
+              <h4>Projekte</h4>
+              <ul>
+                <li>Leitung und Umsetzung von Projekten im Bereich vernetzte Fahrzeug­dienste und IoT-Anwendungen.</li>
+                <li><strong>Connectivity für Camper:</strong> Leitung der Konzeption einer modularen Connectivity-Lösung im Camper-Segment.</li>
+                <li><strong>Air Quality:</strong> Prototypische Umsetzung einer IoT-Anwendung für die Messung von Luftqualität — Ziel: Hypothesen­validierung und fundierte Investment­entscheidung.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Erfolge</h4>
+              <ul>
+                <li><strong>Einführung Selbst­organisation:</strong> Führung mehrerer Teams bei der Transformation zu agilen Methoden, klaren Verantwort­lichkeiten und einer offenen Lernkultur.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="cv-item">
+          <summary>
+            <span class="cv-year">2018 – 2019</span>
+            <span class="cv-role">Junior Managers Program Trainee<span class="cv-org">Robert Bosch AG</span></span>
+            <span class="cv-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="cv-detail">
+            <div>
+              <h4>Programm</h4>
+              <ul>
+                <li>Internationales Traineeprogramm zur Vorbereitung auf Führungs­aufgaben.</li>
+                <li>Schwerpunkt auf <strong>Business Model Innovation</strong> und <strong>IoT</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Fokus</h4>
+              <ul>
+                <li>Rotationen über mehrere Geschäfts­bereiche und Standorte.</li>
+                <li>Aufbau eines breiten Konzern­netzwerks.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="cv-item">
+          <summary>
+            <span class="cv-year">2013 – 2017</span>
+            <span class="cv-role">Projektassistentin<span class="cv-org">Technische Universität Wien</span></span>
+            <span class="cv-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="cv-detail">
+            <div>
+              <h4>Projekte</h4>
+              <ul>
+                <li>Eigenständige Forschung: Charakterisierung organischer Photovoltaik­schichten.</li>
+                <li>Untersuchung von Degradations­mechanismen in Transistoren.</li>
+                <li><strong>The Impact of Mixed Negative Bias Temperature Instability and Hot-Carrier Stress:</strong> Erstmalige Anwendung realer Transistor-Stress­spannungen und -Temperaturen sowie experimenteller Nachweis der Degradations­vorgänge.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Erfolge</h4>
+              <ul>
+                <li>Nachweis der Fähigkeit zu selbst­ständiger wissenschaftlicher Forschung durch erfolgreiche Projekt­durchführung.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="cv-item">
+          <summary>
+            <span class="cv-year">2006 – 2017</span>
+            <span class="cv-role">Studierenden­vertreterin<span class="cv-org">HochschülerInnenschaft an der TU Wien</span></span>
+            <span class="cv-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="cv-detail">
+            <div>
+              <h4>Verantwortung</h4>
+              <ul>
+                <li>Leitung einer Körperschaft des öffentlichen Rechts und ihrer Organe.</li>
+                <li>Strategische Gestaltung hochschul­politischer und organisatorischer Entwicklungen.</li>
+                <li>Konzeption und Etablierung eines jährlich stattfindenden Symposiums zur Förderung von Austausch und Vernetzung von DissertantInnen an der TU Wien.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Erfolge</h4>
+              <ul>
+                <li><strong>Förderung der Vereinbarkeit von Studium und Familie:</strong> Ausbau der universitäts­eigenen Krabbel­stube, Spielplätzen, Einrichtung eines Sozialfonds.</li>
+                <li>Verbesserung der Studien­bedingungen für studierende Eltern — <strong>100 % positives Feedback</strong> in einer Befragung von 20 % der Zielgruppe.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+      </div>
+    </div>
+
+    <!-- BILDUNG -->
+    <div class="cv-panel" data-panel="bildung">
+      <div class="cv-list">
+
+        <details class="cv-item">
+          <summary>
+            <span class="cv-year">2012 – 2018</span>
+            <span class="cv-role">Doktorat der techn. Wissenschaften<span class="cv-org">Technische Universität Wien</span></span>
+            <span class="cv-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="cv-detail">
+            <div>
+              <h4>Doktorarbeit</h4>
+              <ul>
+                <li><em>Mixed Negative Bias Temperature Instability and Hot-Carrier Stress.</em></li>
+                <li>Experimenteller Nachweis realer Transistor-Degradations­mechanismen.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Relevanz</h4>
+              <ul>
+                <li>Selbstständige wissenschaftliche Arbeit über mehrere Jahre.</li>
+                <li>Kompetenz in Hypothesen­bildung, Experiment­design und Ergebnis­kommunikation.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="cv-item">
+          <summary>
+            <span class="cv-year">2004 – 2012</span>
+            <span class="cv-role">Diplomstudium Technische Physik<span class="cv-org">Technische Universität Wien</span></span>
+            <span class="cv-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="cv-detail">
+            <div>
+              <h4>Diplomarbeit</h4>
+              <ul>
+                <li><em>Characterization of Doped CaF₂ Crystals Towards a Solid-State Optical Clock.</em></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Schwerpunkte</h4>
+              <ul>
+                <li>Festkörperphysik, Mess­technik, experimentelle Methoden.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="cv-item">
+          <summary>
+            <span class="cv-year">2021 – 2022</span>
+            <span class="cv-role">Team-Building-Trainerin<span class="cv-org">Österreichische HochschülerInnenschaft</span></span>
+            <span class="cv-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="cv-detail">
+            <div>
+              <h4>Ausbildung</h4>
+              <ul>
+                <li>Einjährige Train-the-Trainer-Ausbildung.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Praxis</h4>
+              <ul>
+                <li>Leitung von mehr als <strong>50 Seminaren</strong>.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="cv-item">
+          <summary>
+            <span class="cv-year">1999 – 2004</span>
+            <span class="cv-role">HTL für Elektronik<span class="cv-org">HTL Mödling</span></span>
+            <span class="cv-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="cv-detail">
+            <div>
+              <h4>Abschlussprojekt</h4>
+              <ul>
+                <li><em>Wireless Security System.</em></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Fokus</h4>
+              <ul>
+                <li>Technische Grundlagen in Elektronik, Mess- und Prüftechnik.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+      </div>
+    </div>
+
+    <!-- EXPERTISE -->
+    <div class="cv-panel" data-panel="expertise">
+      <div class="expertise-grid">
+        <div class="exp-item">
+          <h3>Innovation &amp; Geschäftsmodelle</h3>
+          <p>Innovation Management, Geschäfts­modell­entwicklung, digitale Geschäftsmodelle, Go-to-Market Strategy.</p>
+        </div>
+        <div class="exp-item">
+          <h3>Produkt &amp; Service Development</h3>
+          <p>Produktentwicklung, Produktmanagement, Connectivity &amp; IoT, Service Design.</p>
+        </div>
+        <div class="exp-item">
+          <h3>Projekt- &amp; Transformations­management</h3>
+          <p>Projektmanagement, agiles &amp; hybrides Projektmanagement, Change Management, Organisations­entwicklung.</p>
+        </div>
+        <div class="exp-item">
+          <h3>Methoden &amp; Tools</h3>
+          <p>Design Thinking &amp; UX, Lean Start-up, Pretotyping, KPI- &amp; OKR-Entwicklung.</p>
+        </div>
+        <div class="exp-item">
+          <h3>Leadership &amp; People Development</h3>
+          <p>Teamführung (direkt &amp; fachlich), Transformation, Stakeholder-Management, Mentoring &amp; Coaching, Team-Building.</p>
+        </div>
+        <div class="exp-item">
+          <h3>Sprachen</h3>
+          <p>Deutsch (Muttersprache), Bulgarisch (Muttersprache), Englisch (verhandlungs­sicher).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIVAT -->
+    <div class="cv-panel" data-panel="privat">
+      <div class="cv-list">
+
+        <details class="cv-item">
+          <summary>
+            <span class="cv-year">seit 2021</span>
+            <span class="cv-role">Familie<span class="cv-org">Zwei Kinder, geboren 2021 und 2023</span></span>
+            <span class="cv-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="cv-detail">
+            <div>
+              <h4>Karenz</h4>
+              <ul>
+                <li>Teilweise in Karenz 2021, 2023 und 2024.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Perspektive</h4>
+              <ul>
+                <li>Vereinbarkeit von Beruf und Familie als gelebte Realität — und als Quelle für Priorisierungs­kompetenz.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="cv-item">
+          <summary>
+            <span class="cv-year">seit 2015</span>
+            <span class="cv-role">Paragleiten<span class="cv-org">Pilotenschein A</span></span>
+            <span class="cv-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="cv-detail">
+            <div>
+              <h4>Praxis</h4>
+              <ul>
+                <li>Ca. <strong>40 Flüge pro Jahr</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Was ich mitnehme</h4>
+              <ul>
+                <li>Lesen von Systemen unter Unsicherheit, Entscheidungen in Echtzeit, Respekt vor Kräften, die sich nicht verhandeln lassen.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="cv-item">
+          <summary>
+            <span class="cv-year">2015 – 2019</span>
+            <span class="cv-role">DIY Camper Van Conversion<span class="cv-org">Fiat Ducato → Wohnmobil</span></span>
+            <span class="cv-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="cv-detail">
+            <div>
+              <h4>Projekt</h4>
+              <ul>
+                <li>Eigen­ständiger Ausbau eines Fiat Ducato zum Wohnmobil.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Bezug</h4>
+              <ul>
+                <li>Handwerkliche Grundlage für Produkt­empathie im Camper-/Mobilitäts­segment.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="cv-item">
+          <summary>
+            <span class="cv-year">2014 – 2016</span>
+            <span class="cv-role">Vienna young Scientists Symposium<span class="cv-org">Vorsitz Organisations­komitee</span></span>
+            <span class="cv-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="cv-detail">
+            <div>
+              <h4>Rolle</h4>
+              <ul>
+                <li>Vorsitzende des Organisations­komitees.</li>
+                <li>Heraus­geberin des Tagungs­bandes.</li>
+                <li>Vortragende.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Wirkung</h4>
+              <ul>
+                <li>Etablierung eines Formats zur Vernetzung junger Forschender.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="cv-item">
+          <summary>
+            <span class="cv-year">2012 – 2020</span>
+            <span class="cv-role">Politisches Engagement<span class="cv-org">Die Grünen Wien</span></span>
+            <span class="cv-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="cv-detail">
+            <div>
+              <h4>Engagement</h4>
+              <ul>
+                <li>Freiwillige Mitarbeit auf lokaler Ebene.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Was ich mitnehme</h4>
+              <ul>
+                <li>Aushandeln in Gremien, Dialog mit unterschiedlichen Interessen­gruppen.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="cv-item">
+          <summary>
+            <span class="cv-year">2007 – 2012</span>
+            <span class="cv-role">Laientheater­gruppe<span class="cv-org">Gründung &amp; Schauspiel</span></span>
+            <span class="cv-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="cv-detail">
+            <div>
+              <h4>Rollen</h4>
+              <ul>
+                <li>Gründung, Organisation, Schauspielerin.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Bezug</h4>
+              <ul>
+                <li>Bühnenpräsenz, Stimmführung, Arbeit mit Ensemble­dynamiken.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="kontakt" id="kontakt">
+  <div class="wrap">
+    <div class="section-label reveal" data-num="03">· Kontakt</div>
+    <h1 class="kontakt-title reveal d1">
+      Gern im <em>Gespräch</em>.
+    </h1>
+
+    <div class="kontakt-grid">
+      <div class="k-block reveal d1">
+        <span>E-Mail</span>
+        <a href="/cdn-cgi/l/email-protection#e0958c8c8d818e8ea08289818e8b81ce8194"><span class="__cf_email__" data-cfemail="88fde4e4e5e9e6e6c8eae1e9e6e3e9a6e9fc">[email&#160;protected]</span></a>
+      </div>
+      <div class="k-block reveal d2">
+        <span>Telefon</span>
+        <a href="tel:+436801606133">+43 680 160 61 33</a>
+      </div>
+      <div class="k-block reveal d3">
+        <span>LinkedIn</span>
+        <a href="https://www.linkedin.com/in/bianka-ullmann" target="_blank" rel="noopener">linkedin.com/in/bianka-ullmann<span class="caret"></span></a>
+      </div>
+      <div class="k-block reveal d4">
+        <span>Lebenslauf</span>
+        <a href="uploads/Lebenslauf_Bianka_Ullmann.pdf" target="_blank" rel="noopener">PDF herunterladen<span class="caret"></span></a>
+      </div>
+    </div>
+
+    <div class="kontakt-foot">
+      <div>© 2026 · Bianka Ullmann · Wien</div>
+      <div class="legal-links">
+        <button type="button" class="legal-link" data-modal="impressum">Impressum</button>
+        <button type="button" class="legal-link" data-modal="datenschutz">Datenschutz</button>
+        <a href="#top">Nach oben</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPRESSUM MODAL -->
+<div class="modal" id="modal-impressum" role="dialog" aria-modal="true" aria-labelledby="impressum-title">
+  <div class="modal-card">
+    <button class="modal-close" aria-label="Schließen" data-close></button>
+    <div class="modal-eyebrow">Rechtliches</div>
+    <h2 id="impressum-title">Impressum</h2>
+    <p>Angaben gemäß § 5 E-Commerce-Gesetz (ECG) und § 25 Mediengesetz (MedienG).</p>
+
+    <h3>Medieninhaberin und Herausgeberin</h3>
+    <p>Bianka Ullmann</p>
+
+    <h3>Wohnort</h3>
+    <p>Wien, Österreich</p>
+
+    <h3>Kontakt</h3>
+    <p>E-Mail: <a href="/cdn-cgi/l/email-protection#a7d2cbcbcac6c9c9e7c5cec6c9ccc689c6d3"><span class="__cf_email__" data-cfemail="e2978e8e8f838c8ca2808b838c8983cc8396">[email&#160;protected]</span></a></p>
+
+    <h3>Unternehmensgegenstand</h3>
+    <p>Private Website zur Darstellung des persönlichen Lebenslaufs und beruflicher Stationen.</p>
+
+    <h3>Grundlegende Richtung</h3>
+    <p>Diese Website dient der Präsentation der Person Bianka Ullmann und stellt Informationen zu ihrem beruflichen Werdegang bereit.</p>
+  </div>
+</div>
+
+<!-- DATENSCHUTZ MODAL -->
+<div class="modal" id="modal-datenschutz" role="dialog" aria-modal="true" aria-labelledby="datenschutz-title">
+  <div class="modal-card">
+    <button class="modal-close" aria-label="Schließen" data-close></button>
+    <div class="modal-eyebrow">Rechtliches</div>
+    <h2 id="datenschutz-title">Datenschutzerklärung</h2>
+    <p>Diese Website verarbeitet personenbezogene Daten nur in dem Umfang, der für den Betrieb einer rein informativen Website erforderlich ist. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse am sicheren Betrieb der Website) bzw. Art. 6 Abs. 1 lit. a DSGVO (Einwilligung).</p>
+
+    <h3>Verantwortliche</h3>
+    <p>Bianka Ullmann, Wien, Österreich. Kontakt: <a href="/cdn-cgi/l/email-protection#1560797978747b7b55777c747b7e743b7461"><span class="__cf_email__" data-cfemail="10657c7c7d717e7e507279717e7b713e7164">[email&#160;protected]</span></a></p>
+
+    <h3>Server-Logfiles</h3>
+    <p>Beim Aufruf dieser Website werden durch den Hosting-Provider technisch notwendige Daten (z. B. IP-Adresse, Datum und Uhrzeit der Anfrage, übertragene Datenmenge, Referrer, User-Agent) verarbeitet. Diese Daten werden ausschließlich zur Sicherstellung des Betriebs sowie zur Abwehr von Angriffen verwendet und nach kurzer Zeit gelöscht.</p>
+
+    <h3>Kontaktaufnahme</h3>
+    <p>Wenn Sie per E-Mail oder Telefon Kontakt aufnehmen, werden die übermittelten Angaben zur Beantwortung Ihrer Anfrage verarbeitet. Eine Weitergabe an Dritte erfolgt nicht.</p>
+
+    <h3>Google Fonts</h3>
+    <p>Diese Website lädt Schriftarten von Google Fonts (Google Ireland Limited). Beim Laden wird Ihre IP-Adresse an Google übertragen. Sie können das Laden externer Schriften ablehnen — in diesem Fall wird eine systemeigene Schrift verwendet.</p>
+
+    <h3>Verlinkte Inhalte</h3>
+    <p>Diese Website enthält Verweise auf externe Seiten (z. B. LinkedIn). Beim Anklicken solcher Links gelten die Datenschutzbestimmungen des jeweiligen Anbieters.</p>
+
+    <h3>Cookies</h3>
+    <p>Diese Website setzt keine Tracking- oder Marketing-Cookies. Es wird ausschließlich ein lokaler Speichereintrag (localStorage) verwendet, um Ihre Datenschutz-Auswahl zu merken, sodass die Auswahl nicht bei jedem Besuch erneut abgefragt wird.</p>
+
+    <h3>Ihre Rechte</h3>
+    <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch und Widerruf einer erteilten Einwilligung. Beschwerden können Sie bei der österreichischen Datenschutzbehörde einbringen (<a href="https://www.dsb.gv.at" target="_blank" rel="noopener">www.dsb.gv.at</a>).</p>
+  </div>
+</div>
+
+<!-- CONSENT BANNER -->
+<aside class="consent" id="consent" role="dialog" aria-live="polite" aria-label="Datenschutzhinweis">
+  <h4>Datenschutz</h4>
+  <p>Diese Website verwendet keine Tracking-Cookies. Für die Darstellung werden Schriften von Google Fonts geladen — dabei wird Ihre IP-Adresse an Google übertragen. Details in der <a href="#" data-modal="datenschutz">Datenschutzerklärung</a>.</p>
+  <div class="consent-actions">
+    <button type="button" class="primary" data-consent="accept">Einverstanden</button>
+    <button type="button" data-consent="decline">Nur Notwendiges</button>
+  </div>
+</aside>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Nav scroll state
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 20) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    }
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Modals
+  const openModal = (id) => {
+    const m = document.getElementById('modal-' + id);
+    if (!m) return;
+    m.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+  const closeModal = (m) => {
+    m.classList.remove('open');
+    if (!document.querySelector('.modal.open')) document.body.style.overflow = '';
+  };
+  document.querySelectorAll('[data-modal]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(btn.dataset.modal);
+    });
+  });
+  document.querySelectorAll('.modal').forEach(modal => {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal || e.target.matches('[data-close]')) closeModal(modal);
+    });
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') document.querySelectorAll('.modal.open').forEach(closeModal);
+  });
+
+  // Consent banner
+  const consent = document.getElementById('consent');
+  const CONSENT_KEY = 'bu_consent_v1';
+  const stored = (() => { try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; } })();
+  if (!stored) {
+    setTimeout(() => consent.classList.add('show'), 900);
+  }
+  consent.querySelectorAll('[data-consent]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      try { localStorage.setItem(CONSENT_KEY, btn.dataset.consent); } catch (e) {}
+      consent.classList.remove('show');
+    });
+  });
+
+  // CV Tabs
+  const tabs = document.querySelectorAll('.cv-tab');
+  const panels = document.querySelectorAll('.cv-panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      tabs.forEach(t => t.classList.toggle('active', t === tab));
+      panels.forEach(p => p.classList.toggle('active', p.dataset.panel === target));
+      // close all open details on tab switch for a clean view
+      document.querySelectorAll('.cv-panel:not(.active) details[open]').forEach(d => d.open = false);
+    });
+  });
+
+  // Accordion: allow only one open per panel (optional — uncomment to enforce)
+  // document.querySelectorAll('.cv-panel').forEach(panel => {
+  //   panel.addEventListener('toggle', (e) => {
+  //     if (e.target.matches('details[open]')) {
+  //       panel.querySelectorAll('details[open]').forEach(d => { if (d !== e.target) d.open = false; });
+  //     }
+  //   }, true);
+  // });
+</script>
+
 </body>
 </html>
