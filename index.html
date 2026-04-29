@@ -132,10 +132,11 @@
 
   /* ---------- HERO ---------- */
   .hero {
-    padding: 110px 0 60px;
+    padding: 90px 0 30px;
     position: relative;
     overflow: hidden;
-    min-height: 70vh;
+    height: 70vh;
+    min-height: 560px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -165,7 +166,6 @@
     grid-template-columns: 1.1fr 1fr;
     gap: 40px;
     align-items: end;
-    min-height: 60vh;
   }
 
   .hero-text { padding-bottom: 40px; }
@@ -334,7 +334,6 @@
   .btn-ghost:hover { border-color: var(--ink); }
 
   .hero-meta {
-    margin-top: 56px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
@@ -358,6 +357,16 @@
   @media (max-width: 760px) {
     .hero { padding: 130px 0 80px; }
     .hero-meta { grid-template-columns: 1fr; gap: 18px; }
+  }
+
+  /* meta strip below the hero */
+  .hero-meta-strip {
+    padding: 32px 0 56px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-meta-strip .hero-meta {
+    padding-top: 0;
+    border-top: none;
   }
 
   /* ---------- SECTION ---------- */
@@ -1005,23 +1014,27 @@
         <div class="photo-credit">© Katarina Lindbichler</div>
       </div>
     </div>
+  </div>
+</header>
 
+<section class="hero-meta-strip">
+  <div class="wrap">
     <div class="hero-meta">
-      <div class="item reveal d3">
+      <div class="item reveal">
         <span>Erfahrung</span>
         <p>10+ Jahre Innovation, Produkt &amp; Transformation</p>
       </div>
-      <div class="item reveal d4">
+      <div class="item reveal d1">
         <span>Branchen</span>
         <p>Mobilität · Technologie · Beratung · Soziales</p>
       </div>
-      <div class="item reveal d5">
+      <div class="item reveal d2">
         <span>Sprachen</span>
         <p>Deutsch · Englisch · Bulgarisch</p>
       </div>
     </div>
   </div>
-</header>
+</section>
 
 <!-- ABOUT -->
 <section id="about">
@@ -1515,7 +1528,7 @@
     <div class="kontakt-grid">
       <div class="k-block reveal d1">
         <span>E-Mail</span>
-        <a href="/cdn-cgi/l/email-protection#23564f4f4e424d4d63414a424d48420d4257"><span class="__cf_email__" data-cfemail="06736a6a6b67686846646f67686d67286772">[email&#160;protected]</span></a>
+        <a href="/cdn-cgi/l/email-protection#30455c5c5d515e5e705259515e5b511e5144"><span class="__cf_email__" data-cfemail="afdac3c3c2cec1c1efcdc6cec1c4ce81cedb">[email&#160;protected]</span></a>
       </div>
       <div class="k-block reveal d2">
         <span>Telefon</span>
@@ -1557,7 +1570,7 @@
     <p>Wien, Österreich</p>
 
     <h3>Kontakt</h3>
-    <p>E-Mail: <a href="/cdn-cgi/l/email-protection#86f3eaeaebe7e8e8c6e4efe7e8ede7a8e7f2"><span class="__cf_email__" data-cfemail="aedbc2c2c3cfc0c0eeccc7cfc0c5cf80cfda">[email&#160;protected]</span></a></p>
+    <p>E-Mail: <a href="/cdn-cgi/l/email-protection#a7d2cbcbcac6c9c9e7c5cec6c9ccc689c6d3"><span class="__cf_email__" data-cfemail="6b1e0707060a05052b09020a05000a450a1f">[email&#160;protected]</span></a></p>
 
     <h3>Unternehmensgegenstand</h3>
     <p>Private Website zur Darstellung des persönlichen Lebenslaufs und beruflicher Stationen.</p>
@@ -1576,7 +1589,7 @@
     <p>Diese Website verarbeitet personenbezogene Daten nur in dem Umfang, der für den Betrieb einer rein informativen Website erforderlich ist. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse am sicheren Betrieb der Website) bzw. Art. 6 Abs. 1 lit. a DSGVO (Einwilligung).</p>
 
     <h3>Verantwortliche</h3>
-    <p>Bianka Ullmann, Wien, Österreich. Kontakt: <a href="/cdn-cgi/l/email-protection#c5b0a9a9a8a4abab85a7aca4abaea4eba4b1"><span class="__cf_email__" data-cfemail="2e5b4242434f40406e4c474f40454f004f5a">[email&#160;protected]</span></a></p>
+    <p>Bianka Ullmann, Wien, Österreich. Kontakt: <a href="/cdn-cgi/l/email-protection#acd9c0c0c1cdc2c2eccec5cdc2c7cd82cdd8"><span class="__cf_email__" data-cfemail="ef9a8383828e8181af8d868e81848ec18e9b">[email&#160;protected]</span></a></p>
 
     <h3>Server-Logfiles</h3>
     <p>Beim Aufruf dieser Website werden durch den Hosting-Provider technisch notwendige Daten (z. B. IP-Adresse, Datum und Uhrzeit der Anfrage, übertragene Datenmenge, Referrer, User-Agent) verarbeitet. Diese Daten werden ausschließlich zur Sicherstellung des Betriebs sowie zur Abwehr von Angriffen verwendet und nach kurzer Zeit gelöscht.</p>
